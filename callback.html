@@ -2,7 +2,7 @@
 <title>fun_faicts · Connected</title><style>body{margin:0;background:#0d1b3d;color:#fff;font:17px/1.6 system-ui,-apple-system,Segoe UI,sans-serif}
 main{max-width:720px;margin:0 auto;padding:48px 24px}h1{font-size:44px;margin:0 0 8px;font-weight:900}
 h1 span{color:#ffd21f}h2{color:#ffd21f;margin-top:32px}a{color:#ffd21f}nav{margin-top:40px;opacity:.8}</style></head><body><main><h1>fun_f<span>ai</span>cts</h1>
-<h2>Login received</h2><p id="msg">Checking…</p>
+<h2>TikTok connected</h2><p id="msg">Checking…</p>
 <p><code id="code" style="word-break:break-all;background:#1d2d57;padding:8px 10px;border-radius:6px;display:none"></code></p>
 <p><button id="copy" style="display:none;background:#ffd21f;border:0;border-radius:6px;padding:10px 16px;font-weight:800">Copy code</button></p>
 <p style="opacity:.8">This page only shows the one-time login code TikTok sends back. Nothing is stored here.</p>
@@ -10,7 +10,9 @@ h1 span{color:#ffd21f}h2{color:#ffd21f;margin-top:32px}a{color:#ffd21f}nav{margi
 <script>
 const p=new URLSearchParams(location.search), c=p.get("code"), e=p.get("error_description")||p.get("error");
 const m=document.getElementById("msg");
-if(c){m.textContent="Copy this one-time code and use it within 5 minutes, as Claude explains.";
+let ok=true;try{const want=sessionStorage.getItem("tt_state");if(want&&p.get("state")&&want!==p.get("state"))ok=false}catch(e){}
+if(!ok){m.textContent="This login link doesn't match the one started here. Please start again from the Connect page.";throw 0}
+if(c){m.textContent="Thanks! Copy this one-time code into the fun_faicts pipeline within a few minutes to finish connecting.";
  const el=document.getElementById("code");el.textContent=c;el.style.display="inline-block";
  const b=document.getElementById("copy");b.style.display="inline-block";
  b.onclick=()=>{navigator.clipboard.writeText(c).then(()=>b.textContent="Copied")};}
