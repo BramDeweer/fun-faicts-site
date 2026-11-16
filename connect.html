@@ -4,14 +4,14 @@ main{max-width:720px;margin:0 auto;padding:48px 24px}h1{font-size:44px;margin:0 
 h1 span{color:#ffd21f}h2{color:#ffd21f;margin-top:32px}a{color:#ffd21f}nav{margin-top:40px;opacity:.8}</style></head><body><main><h1>fun_f<span>ai</span>cts</h1>
 <h2>Connect TikTok</h2>
 <p>Connect the <b>@fun_faicts</b> TikTok account to our publishing pipeline. After you approve, each new fun_faicts video is sent to your TikTok account, with our caption and hashtags.</p>
-<p>We ask for: your basic profile (to confirm the right account is connected), uploading videos as drafts to your inbox, and posting videos to your account.</p>
+<p>We ask for: your basic profile and follower stats (to confirm the right account is connected and show channel growth), your video list and view counts (for our own dashboard), uploading videos as drafts to your inbox, and posting videos to your account.</p>
 <p><a id="go" href="#" style="display:inline-block;background:#ffd21f;color:#0d1b3d;text-decoration:none;font-weight:900;padding:14px 22px;border-radius:10px">Continue with TikTok</a></p>
 <p style="opacity:.8">You can disconnect at any time in TikTok: Settings and privacy → Security → Manage app permissions.</p>
 <nav><a href="./">Home</a> · <a href="privacy.html">Privacy policy</a> · <a href="terms.html">Terms of service</a></nav></main>
 <script>
 const s=[...crypto.getRandomValues(new Uint8Array(16))].map(b=>b.toString(16).padStart(2,"0")).join("");
 try{sessionStorage.setItem("tt_state",s)}catch(e){}
-const q=new URLSearchParams({client_key:"sbawaicgv9az1brnsr",scope:"user.info.basic,video.upload,video.publish",
+const q=new URLSearchParams({client_key:"sbawaicgv9az1brnsr",scope:"user.info.basic,video.upload,video.publish,user.info.stats,video.list",
  response_type:"code",redirect_uri:"https://bramdeweer.github.io/fun-faicts-site/callback.html",state:s});
 document.getElementById("go").href="https://www.tiktok.com/v2/auth/authorize/?"+q.toString();
 </script></body></html>
